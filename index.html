@@ -7,15 +7,39 @@
     <script src="https://d3js.org/d3.v5.min.js"></script>
 
     <style>
-        .header {
-            margin: 120px;
-            text-align: center;
-            font-size: 50px;
+        @media (min-width: 320px) {
+            .header {
+                margin-left: 20%;
+                margin-right: 20%;
+                margin-top: 5%;
+                text-align: center;
+            }
         }
 
-        #canvas {
-            margin: 10%;
-            /* margin-right: 120px; */
+        @media (min-width: 1025px) {
+            .header {
+                margin-left: 27%;
+                margin-right: 27%;
+                margin-top: 5%;
+                text-align: center;
+                font-size: 50px;
+            }
+        }
+        .legend {
+            margin-left: 10%;
+            text-align: left;     
+        }
+        
+
+        .month_header {
+            margin-left: 10%;
+            text-align: left;
+            /* font-size: 50px; */
+        }
+
+        .canvas {
+            margin-left: 10%;
+            margin-right: 10%;
             width: 80%;
         }
     </style>
@@ -25,7 +49,26 @@
 <body>
     <h1 id="title" class="header"></h1>
     <h1 id="total_deaths" class="header"></h1>
-    <canvas id="canvas"></canvas>
+    <h5 id="dot_legend" class="legend">each dot = one person- a human being with family, life, ambition, dreams</h5>
+    <h5 id="row_legend" class="legend"></h5>
+    <h2 class="month_header">October</h2>
+    <canvas id="october" class="canvas"></canvas>
+    <h2 class="month_header">September</h2>
+    <canvas id="september" class="canvas"></canvas>
+    <h2 class="month_header">August</h2>
+    <canvas id="august" class="canvas"></canvas>
+    <h2 class="month_header">July</h2>
+    <canvas id="july" class="canvas"></canvas>
+    <h2 class="month_header">June</h2>
+    <canvas id="june" class="canvas"></canvas>
+    <h2 class="month_header">May</h2>
+    <canvas id="may" class="canvas"></canvas>
+    <h2 class="month_header">April</h2>
+    <canvas id="april" class="canvas"></canvas>
+    <h2 class="month_header">March</h2>
+    <canvas id="march" class="canvas"></canvas>
+    <h2 class="month_header">Feburary</h2>
+    <canvas id="feburary" class="canvas"></canvas>
     <script src="data.js"></script>
 
 </body>
