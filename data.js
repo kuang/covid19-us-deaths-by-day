@@ -13,6 +13,9 @@ let monthlyDeathData = [
     { month: "september", deaths: 199776 },
     { month: "october", deaths: 0 },
 ];
+
+
+
 // let canvasWidth = canvas.clientWidth;
 // canvas.width = canvasWidth;
 d3.json("https://api.covidtracking.com/v1/us/current.json").then(data => {
@@ -44,7 +47,7 @@ d3.json("https://api.covidtracking.com/v1/us/current.json").then(data => {
     document.getElementById("row_legend").innerHTML = 
         "each row = ".concat(
             dots_per_row+1,
-            " of these lives."
+            " lives."
         );
 });
 
