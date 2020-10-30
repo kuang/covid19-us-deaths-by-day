@@ -4,6 +4,7 @@ let secondsInDay = 86400;
 d3.json("https://api.covidtracking.com/v1/us/current.json").then(data => {
     let dateStringInfo = getDateStringFromDateInt(data[0].date);
     dailyDeaths = data[0].deathIncrease;
+    totalDeaths = data[0].death;
     document.getElementById("title").innerHTML =
         "".concat(
             dateStringInfo,
@@ -11,7 +12,7 @@ d3.json("https://api.covidtracking.com/v1/us/current.json").then(data => {
             Math.floor(secondsInDay / dailyDeaths),
             ' seconds.'
         );
-
+    
 });
 
 
