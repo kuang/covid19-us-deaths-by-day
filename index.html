@@ -2,9 +2,18 @@
 
 <head>
     <meta charset=UTF-8>
+    <meta property="og:url" content="https://coviddeaths.us" />
     <meta property="og:image" content="preview.png">
+    <meta property="og:title" content="American COVID-19 Deaths" />
+    <meta property="og:description" content="Visualizing COVID-19 deaths in America." />
+    <meta name="description" content="Visualizing COVID-19 deaths in America.">
+    <meta name="author" content="Justin Kuang">
 
+    <head>
+        <title>American COVID-19 Deaths</title>
+    </head>
     <script src="https://d3js.org/d3.v5.min.js"></script>
+    <script src="data.js"></script>
 
     <style>
         @media (min-width: 320px) {
@@ -25,16 +34,16 @@
                 font-size: 50px;
             }
         }
+
         .legend {
             margin-left: 10%;
-            text-align: left;     
+            text-align: left;
         }
-        
+
 
         .month_header {
             margin-left: 10%;
             text-align: left;
-            /* font-size: 50px; */
         }
 
         .canvas {
@@ -42,9 +51,11 @@
             margin-right: 10%;
             width: 80%;
         }
+
         #vote {
             margin-top: 10%;
         }
+
         #info {
             margin-top: 20%;
         }
@@ -53,10 +64,9 @@
 
 
 <body>
-    <script src="data.js"></script>
     <h1 id="title" class="header">An American died of COVID-19 every seconds.</h1>
     <h1 id="total_deaths" class="header">What does this death toll actually look like?</h1>
-    <h5 id="dot_legend" class="legend">each dot = one person- an American with family, life, ambition, dreams</h5>
+    <h5 id="dot_legend" class="legend">each dot = one person- an American with family, life, ambition, dreams.</h5>
     <h5 id="row_legend" class="legend">each row = lives</h5>
     <h2 class="month_header">October</h2>
     <canvas id="october" class="canvas"></canvas>
@@ -76,8 +86,8 @@
     <canvas id="march" class="canvas"></canvas>
     <h2 class="month_header">Feburary</h2>
     <canvas id="feburary" class="canvas"></canvas>
-    <!-- <h3>Please vote on November 3rd.</h3> -->
-    <h1 class="month_header" id="vote">No one wants more dots. Please vote on November 3rd. </br><a href="https://www.vote.org/">vote.org</a></h1>
+    <h1 class="month_header" id="vote">No one wants more dots. Please vote on November 3rd. </br><a
+            href="https://www.vote.org/">vote.org</a></h1>
     <h5 class="month_header" id="info">built by <a href="https://twitter.com/justkuang/">Justin Kuang</a></h5>
 
 </body>

@@ -14,10 +14,6 @@ let monthlyDeathData = [
     { month: "october", deaths: 0 },
 ];
 
-
-
-// let canvasWidth = canvas.clientWidth;
-// canvas.width = canvasWidth;
 d3.json("https://api.covidtracking.com/v1/us/current.json").then(data => {
     let dateStringInfo = getDateStringFromDateInt(data[0].date);
     let dailyDeaths = data[0].deathIncrease;
