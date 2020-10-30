@@ -3,7 +3,7 @@ const DOT_SIZE = 2;
 const SPACING_SIZE = 10;
 
 let monthlyDeathData = [
-    { month: "feburary", deaths: 8 },
+    { month: "february", deaths: 8 },
     { month: "march", deaths: 5324 },
     { month: "april", deaths: 61356 },
     { month: "may", deaths: 101163 },
@@ -38,7 +38,6 @@ d3.json("https://api.covidtracking.com/v1/us/current.json").then(data => {
     monthlyDeathData.forEach(month => {
         drawDotsOnCanvas(month.month, month.deaths);
     });
-    // drawDotsOnCanvas("october", 20647);
     let dots_per_row = Math.floor(document.getElementById('october').width / (DOT_SIZE + SPACING_SIZE));
     document.getElementById("row_legend").innerHTML = 
         "each row = ".concat(
@@ -97,6 +96,4 @@ function getHeightFromWidthAndNumDots(width, numDots){
     let num_rows_need = (Math.ceil(numDots / dots_per_row));
 
     return (num_rows_need * (DOT_SIZE + SPACING_SIZE));
-
-
 }
