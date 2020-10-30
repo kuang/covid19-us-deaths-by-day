@@ -7,18 +7,25 @@
     <script src="https://d3js.org/d3.v5.min.js"></script>
 
     <style>
-        #title {
+        .header {
             margin: 120px;
             text-align: center;
             font-size: 50px;
+        }
+
+        #canvas {
+            margin: 10%;
+            /* margin-right: 120px; */
+            width: 80%;
         }
     </style>
 </head>
 
 
 <body>
-    <h1 id="title"></h1>
-    <h2 id="every_seconds"></h2>
+    <h1 id="title" class="header"></h1>
+    <h1 id="total_deaths" class="header"></h1>
+    <canvas id="canvas"></canvas>
     <script src="data.js"></script>
 
 </body>
