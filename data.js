@@ -1,6 +1,6 @@
 const secondsInDay = 86400;
-const DOT_SIZE = 2;
-const SPACING_SIZE = 10;
+const DOT_SIZE = 3;
+const SPACING_SIZE = 15;
 
 let monthlyDeathData = [
     { month: "february", deaths: 8 },
