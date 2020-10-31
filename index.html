@@ -3,7 +3,6 @@
 <head>
     <meta charset=UTF-8>
     <meta property="og:url" content="https://coviddeaths.us" />
-    <meta property="og:image" content="preview.png">
     <meta property="og:title" content="American COVID-19 Deaths" />
     <meta property="og:description" content="Visualizing COVID-19 deaths in America." />
     <meta name="description" content="Visualizing COVID-19 deaths in America.">
@@ -20,15 +19,21 @@
 
             gtag('config', 'G-H61BK5DGKQ');
         </script>
+        <link href="https://fonts.googleapis.com/css2?family=B612&display=swap" rel="stylesheet">
+        <link rel="icon" href="icon.png">
     </head>
     <script src="https://d3js.org/d3.v5.min.js"></script>
     <script src="data.js"></script>
 
     <style>
+        body {
+            font-family: 'B612', sans-serif;
+        }
+
         @media (min-width: 320px) {
             .header {
-                margin-left: 20%;
-                margin-right: 20%;
+                margin-left: 10%;
+                margin-right: 10%;
                 margin-top: 5%;
                 text-align: center;
             }
@@ -77,7 +82,7 @@
 <body>
     <h1 id="title" class="header"></h1>
     <h1 id="total_deaths" class="header"></h1>
-    <h4 id="dot_legend" class="legend">each dot = one person- an American who left behind family, ambition, dreams.</h4>
+    <h4 id="dot_legend" class="legend">each dot = one life- an American who left behind family, ambition and dreams.</h4>
     <h4 id="row_legend" class="legend">each row = 100 lives.</h4>
     <h2 class="month_header">October</h2>
     <canvas id="october" class="canvas"></canvas>
@@ -97,7 +102,7 @@
     <canvas id="march" class="canvas"></canvas>
     <h2 class="month_header">February</h2>
     <canvas id="february" class="canvas"></canvas>
-    <h1 class="month_header" id="vote">No one wants more dots. Please vote on November 3rd. </br><a
+    <h1 class="month_header" id="vote">No one wants more dots. Please vote on or before November 3rd. </br><a
             href="https://www.vote.org/">vote.org</a></h1>
     <h5 class="month_header" id="info">built by <a href="https://twitter.com/justkuang">Justin Kuang</a></h5>
 
