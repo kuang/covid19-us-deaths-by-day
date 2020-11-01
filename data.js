@@ -70,12 +70,14 @@ function drawDotsOnCanvas(canvasId, numDots){
 
 function getDateStringFromDateInt(dateInt) {
     dateString = dateInt.toString();
-    var year = dateString.substring(0, 4);
-    var month = dateString.substring(4, 6);
-    var day = dateString.substring(6, 8);
-    var dateFromData = new Date(year, month - 1, day);
-    var currentDate = new Date();
-    if (dateFromData.getDate() === currentDate.getDate() - 1) {
+    let year = dateString.substring(0, 4);
+    let month = dateString.substring(4, 6);
+    let day = dateString.substring(6, 8);
+    let dateFromData = new Date(year, month - 1, day);
+    let currentDate = new Date();
+    let yesterday = new Date();
+    yesterday.setDate(currentDate.getDate()-1);
+    if (dateFromData.getDate() === yesterday.getDate()) {
         return "Yesterday, on ".concat(dateFromData.toDateString());
     }
     else if (dateFromData.getDate() === currentDate.getDate()) {
@@ -92,7 +94,6 @@ function numberWithCommas(x) {
 
 function getHeightFromWidthAndNumDots(width, numDots){
     let dots_per_row = Math.ceil(width / (DOT_SIZE + SPACING_SIZE));
-    console.log(dots_per_row);
     let num_rows_need = (Math.ceil(numDots / dots_per_row));
 
     return (num_rows_need * (DOT_SIZE + SPACING_SIZE));
