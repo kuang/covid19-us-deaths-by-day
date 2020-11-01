@@ -3,6 +3,7 @@ const DOT_SIZE = 3;
 const SPACING_SIZE = 12;
 
 let monthlyDeathData = [
+    { month: "yesterday", deaths: 0 },
     { month: "february", deaths: 8 },
     { month: "march", deaths: 5324 },
     { month: "april", deaths: 61356 },
@@ -19,15 +20,19 @@ d3.json("https://api.covidtracking.com/v1/us/current.json").then(data => {
     let dailyDeaths = data[0].deathIncrease;
     let totalDeaths = data[0].death;
     monthlyDeathData[monthlyDeathData.length - 1].deaths = totalDeaths;
-    for (let i = monthlyDeathData.length - 1; i > 0; i--) {
+    monthlyDeathData[0].deaths = dailyDeaths;
+    for (let i = monthlyDeathData.length - 1; i > 1; i--) {
         monthlyDeathData[i].deaths = monthlyDeathData[i].deaths - monthlyDeathData[i - 1].deaths;
+        let headerID = monthlyDeathData[i].month.concat('_header');
+        let currentString = document.getElementById(headerID).innerHTML;
+        document.getElementById(headerID).innerHTML = currentString.concat(': ', numberWithCommas(monthlyDeathData[i].deaths), ' deaths');
     }
+    document.getElementById("yesterday_header").innerHTML = dateStringInfo.concat(': ', numberWithCommas(dailyDeaths), ' deaths');
     document.getElementById("title").innerHTML =
         "".concat(
             dateStringInfo,
             ", </br>",
-            numberWithCommas(dailyDeaths),
-            " Americans died of COVID-19- </br> one every ",
+            "an American died of COVID-19 </br> every ",
             Math.floor(secondsInDay / dailyDeaths),
             ' seconds.'
         );
@@ -40,33 +45,33 @@ d3.json("https://api.covidtracking.com/v1/us/current.json").then(data => {
         drawDotsOnCanvas(month.month, month.deaths);
     });
     let dots_per_row = Math.floor(document.getElementById('october').width / (DOT_SIZE + SPACING_SIZE));
-    document.getElementById("row_legend").innerHTML = 
+    document.getElementById("row_legend").innerHTML =
         "each row = ".concat(
-            dots_per_row+1,
+            dots_per_row + 1,
             " lives."
         );
 });
 
-function drawDotsOnCanvas(canvasId, numDots){
+function drawDotsOnCanvas(canvasId, numDots) {
     const canvas = document.getElementById(canvasId);
     const ctx = canvas.getContext('2d');
     canvas.width = canvas.clientWidth;
     canvas.height = getHeightFromWidthAndNumDots(canvas.width, numDots);
-
+    let red = canvasId === 'yesterday' ? 255 : 0;
     let num_dots = 0;
     // rows
-    for(let y = 0; y<canvas.height; y+= (DOT_SIZE+SPACING_SIZE)){
+    for (let y = 0; y < canvas.height; y += (DOT_SIZE + SPACING_SIZE)) {
         // cols
-        for(let x = 0; x<canvas.width; x+= (DOT_SIZE+SPACING_SIZE)){
-            if(num_dots>=numDots){
+        for (let x = 0; x < canvas.width; x += (DOT_SIZE + SPACING_SIZE)) {
+            if (num_dots >= numDots) {
                 break;
             }
-            ctx.fillStyle = 'rgba(' + 0 + ',' + 0 + ',' + 0 + ',' + 1 + ')';
-            ctx.fillRect(x, y, DOT_SIZE, DOT_SIZE);   
+            ctx.fillStyle = 'rgba(' + red + ',' + 0 + ',' + 0 + ',' + 1 + ')';
+            ctx.fillRect(x, y, DOT_SIZE, DOT_SIZE);
             num_dots++;
         }
-        
-    }   
+
+    }
 }
 
 function getDateStringFromDateInt(dateInt) {
@@ -77,7 +82,7 @@ function getDateStringFromDateInt(dateInt) {
     let dateFromData = new Date(year, month - 1, day);
     let currentDate = new Date();
     let yesterday = new Date();
-    yesterday.setDate(currentDate.getDate()-1);
+    yesterday.setDate(currentDate.getDate() - 1);
     //let dateText = dateFromData.toDateString();
     let monthStr = dateFromData.toLocaleString('default', { month: 'long' })
     if (dateFromData.getDate() === yesterday.getDate()) {
@@ -95,7 +100,7 @@ function numberWithCommas(x) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
 
-function getHeightFromWidthAndNumDots(width, numDots){
+function getHeightFromWidthAndNumDots(width, numDots) {
     let dots_per_row = Math.ceil(width / (DOT_SIZE + SPACING_SIZE));
     let num_rows_need = (Math.ceil(numDots / dots_per_row));
 
