@@ -39,7 +39,7 @@ d3.json("https://api.covidtracking.com/v1/us/current.json").then(data => {
     document.getElementById("total_deaths").innerHTML =
         "".concat(
             numberWithCommas(totalDeaths),
-            ' American lives have been lost to </br> COVID-19 since January. What does this death toll actually look like?'
+            ' American lives have been lost to COVID-19 since January. What does this death toll actually look like?'
         );
     monthlyDeathData.forEach(month => {
         drawDotsOnCanvas(month.month, month.deaths);
