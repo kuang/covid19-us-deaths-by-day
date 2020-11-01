@@ -25,15 +25,16 @@ d3.json("https://api.covidtracking.com/v1/us/current.json").then(data => {
     document.getElementById("title").innerHTML =
         "".concat(
             dateStringInfo,
-            ', an American died of COVID-19 every ',
+            ", </br>",
+            numberWithCommas(dailyDeaths),
+            " Americans died of COVID-19- </br> one every ",
             Math.floor(secondsInDay / dailyDeaths),
             ' seconds.'
         );
     document.getElementById("total_deaths").innerHTML =
         "".concat(
-            'There have been ',
             numberWithCommas(totalDeaths),
-            ' American lives lost to COVID-19 since January 2020. What does this death toll actually look like?'
+            ' American lives have been lost to COVID-19 since January. What does this death toll actually look like?'
         );
     monthlyDeathData.forEach(month => {
         drawDotsOnCanvas(month.month, month.deaths);
@@ -77,14 +78,16 @@ function getDateStringFromDateInt(dateInt) {
     let currentDate = new Date();
     let yesterday = new Date();
     yesterday.setDate(currentDate.getDate()-1);
+    //let dateText = dateFromData.toDateString();
+    let monthStr = dateFromData.toLocaleString('default', { month: 'long' })
     if (dateFromData.getDate() === yesterday.getDate()) {
-        return "Yesterday, on ".concat(dateFromData.toDateString());
+        return "Yesterday, on ".concat(monthStr, ' ', day);
     }
     else if (dateFromData.getDate() === currentDate.getDate()) {
-        return "Today, on ".concat(dateFromData.toDateString());
+        return "Today, on ".concat(monthStr, '  ', day);
     }
     else {
-        return "On ".concat(dateFromData.toDateString());
+        return "On ".concat(monthStr, ' ', day);
     }
 }
 

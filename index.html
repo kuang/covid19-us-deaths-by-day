@@ -32,32 +32,44 @@
 
         @media (min-width: 320px) {
             .header {
+                margin-left: 6%;
+                margin-right: 6%;
+                margin-top: 5%;
+                text-align: center;
+                font-size: 20px;
+            }
+
+            .legend {
                 margin-left: 10%;
                 margin-right: 10%;
                 margin-top: 5%;
-                text-align: center;
+                text-align: left;
+                font-size: 10px;
             }
         }
 
         @media (min-width: 1025px) {
             .header {
-                margin-left: 27%;
-                margin-right: 27%;
+                margin-left: 20%;
+                margin-right: 20%;
                 margin-top: 5%;
                 text-align: center;
-                font-size: 50px;
+                font-size: 40px;
             }
-        }
 
-        .legend {
-            margin-left: 10%;
-            margin-right: 10%;
-            text-align: left;
+            .legend {
+                margin-left: 10%;
+                margin-right: 10%;
+                margin-top: 0;
+                text-align: left;
+                font-size: 15px;
+            }
         }
 
 
         .month_header {
             margin-left: 10%;
+            margin-top: 5%;
             text-align: left;
         }
 
@@ -82,7 +94,8 @@
 <body>
     <h1 id="title" class="header"></h1>
     <h1 id="total_deaths" class="header"></h1>
-    <h4 id="dot_legend" class="legend">each dot = one life- an American who left behind family, ambition and dreams.</h4>
+    <h4 id="dot_legend" class="legend">each dot = one life- an American who left behind family, ambition and dreams.
+    </h4>
     <h4 id="row_legend" class="legend">each row = 100 lives.</h4>
     <h2 class="month_header">October</h2>
     <canvas id="october" class="canvas"></canvas>
