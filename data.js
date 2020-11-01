@@ -24,7 +24,6 @@ d3.json("https://api.covidtracking.com/v1/us/current.json").then(data => {
     for (let i = monthlyDeathData.length - 1; i > 0; i--) {
         if (monthlyDeathData[i].month !== 'february') monthlyDeathData[i].deaths = monthlyDeathData[i].deaths - monthlyDeathData[i - 1].deaths;
         let headerID = monthlyDeathData[i].month.concat('_header');
-        console.log(headerID);
         let currentString = document.getElementById(headerID).innerHTML;
         document.getElementById(headerID).innerHTML = currentString.concat(': ', numberWithCommas(monthlyDeathData[i].deaths), ' deaths');
     }
