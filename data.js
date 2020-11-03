@@ -4,15 +4,16 @@ const SPACING_SIZE = 12;
 
 let monthlyDeathData = [
     { month: "yesterday", deaths: 0 },
-    { month: "february", deaths: 8 },
-    { month: "march", deaths: 5324 },
-    { month: "april", deaths: 61356 },
-    { month: "may", deaths: 101163 },
-    { month: "june", deaths: 120762 },
-    { month: "july", deaths: 146537 },
-    { month: "august", deaths: 176639 },
-    { month: "september", deaths: 199776 },
-    { month: "october", deaths: 0 },
+    { month: "february", deaths: 5 },
+    { month: "march", deaths: 4313 },
+    { month: "april", deaths: 59577 },
+    { month: "may", deaths: 100495 },
+    { month: "june", deaths: 120061 },
+    { month: "july", deaths: 145347 },
+    { month: "august", deaths: 175612 },
+    { month: "september", deaths: 198925 },
+    { month: "october", deaths: 222319 },
+    { month: "november", deaths: 0 },
 ];
 
 d3.json("https://api.covidtracking.com/v1/us/current.json").then(data => {
