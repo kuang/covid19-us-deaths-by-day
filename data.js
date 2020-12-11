@@ -13,7 +13,8 @@ let monthlyDeathData = [
     { month: "august", deaths: 175612 },
     { month: "september", deaths: 198925 },
     { month: "october", deaths: 222319 },
-    { month: "november", deaths: 0 },
+    { month: "november", deaths: 261789 },
+    { month: "december", deaths: 0 },
 ];
 
 d3.json("https://api.covidtracking.com/v1/us/current.json").then(data => {
@@ -84,7 +85,6 @@ function getDateStringFromDateInt(dateInt) {
     let currentDate = new Date();
     let yesterday = new Date();
     yesterday.setDate(currentDate.getDate() - 1);
-    //let dateText = dateFromData.toDateString();
     let monthStr = dateFromData.toLocaleString('default', { month: 'long' })
     if (dateFromData.getDate() === yesterday.getDate()) {
         return "Yesterday, on ".concat(monthStr, ' ', day);
