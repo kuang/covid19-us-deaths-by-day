@@ -2,19 +2,21 @@ const secondsInDay = 86400;
 const DOT_SIZE = 3;
 const SPACING_SIZE = 12;
 
+// api link for updating month: https://api.covidtracking.com/v1/us/20210101.json
 let monthlyDeathData = [
     { month: "yesterday", deaths: 0 },
-    { month: "february", deaths: 5 },
-    { month: "march", deaths: 4313 },
-    { month: "april", deaths: 59577 },
-    { month: "may", deaths: 100495 },
-    { month: "june", deaths: 120061 },
-    { month: "july", deaths: 145347 },
-    { month: "august", deaths: 175612 },
-    { month: "september", deaths: 198925 },
-    { month: "october", deaths: 222319 },
-    { month: "november", deaths: 261789 },
-    { month: "december", deaths: 0 },
+    { month: "february_2020", deaths: 5 },
+    { month: "march_2020", deaths: 4313 },
+    { month: "april_2020", deaths: 59577 },
+    { month: "may_2020", deaths: 100495 },
+    { month: "june_2020", deaths: 120061 },
+    { month: "july_2020", deaths: 145347 },
+    { month: "august_2020", deaths: 175612 },
+    { month: "september_2020", deaths: 198925 },
+    { month: "october_2020", deaths: 222319 },
+    { month: "november_2020", deaths: 261789 },
+    { month: "december_2020", deaths: 339407 },
+    { month: "january_2021", deaths: 0 },
 ];
 
 d3.json("https://api.covidtracking.com/v1/us/current.json").then(data => {
@@ -24,7 +26,7 @@ d3.json("https://api.covidtracking.com/v1/us/current.json").then(data => {
     monthlyDeathData[monthlyDeathData.length - 1].deaths = totalDeaths;
     monthlyDeathData[0].deaths = dailyDeaths;
     for (let i = monthlyDeathData.length - 1; i > 0; i--) {
-        if (monthlyDeathData[i].month !== 'february') monthlyDeathData[i].deaths = monthlyDeathData[i].deaths - monthlyDeathData[i - 1].deaths;
+        if (monthlyDeathData[i].month !== 'february_2020') monthlyDeathData[i].deaths = monthlyDeathData[i].deaths - monthlyDeathData[i - 1].deaths;
         let headerID = monthlyDeathData[i].month.concat('_header');
         let currentString = document.getElementById(headerID).innerHTML;
         document.getElementById(headerID).innerHTML = currentString.concat(': ', numberWithCommas(monthlyDeathData[i].deaths), ' deaths');
